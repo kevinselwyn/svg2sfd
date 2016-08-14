@@ -49,3 +49,9 @@ The `id` can also be a hex code in one of two formats:
     Some SVG...
 </g>
 ```
+
+Note: Here are a few things that are currently not supported:
+
+* Transforms of any kind
+* Relative positionings in the `d` attribute of the `<path>` element
+* `A` support in the `<path>` element (along with a few other arc functions)
