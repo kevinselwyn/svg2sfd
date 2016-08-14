@@ -1,0 +1,45 @@
+#!/usr/bin/python
+"""svg2sfd __init__"""
+
+import argparse
+from svg2sfd import SVG2SFD
+
+class SVG2SFDHelpFormatter(argparse.HelpFormatter):
+    """Help formatter"""
+
+    def add_usage(self, usage, actions, groups, prefix=None):
+        """Usage text"""
+
+        if prefix is None:
+            prefix = 'Usage: '
+
+        return super(SVG2SFDHelpFormatter, self).add_usage(usage, actions, groups, prefix)
+
+def main():
+    """Main function"""
+
+    parser = argparse.ArgumentParser(
+        prog='svg2sfd',
+        description='Convert SVG to FontForge SFD format',
+        formatter_class=lambda prog: SVG2SFDHelpFormatter(prog, max_help_position=40)
+    )
+
+    parser.add_argument('-i', '--input', dest='input', type=str, default=None, required=True, help='input filename')
+    parser.add_argument('-o', '--output', dest='output', type=str, default=None, required=False, help='output filename')
+    parser.add_argument('-n', '--name', dest='name', type=str, default=None, required=False, help='font name')
+    parser.add_argument('-f', '--family', dest='family', type=str, default=None, required=False, help='font family name')
+    parser.add_argument('-c', '--copyright', dest='copyright', type=str, default=None, required=False, help='font copyright')
+    parser.add_argument('-w', '--weight', dest='weight', type=str, default=None, required=False, help='font weight/number')
+    parser.add_argument('-v', '--version', dest='version', type=str, default=None, required=False, help='font version number')
+
+    args = parser.parse_args()
+
+    svg2png = SVG2SFD(args.input, vars(args))
+
+    if args.output:
+        svg2png.save_sfd(args.output)
+    else:
+        print svg2png.data
+
+if __name__ == '__main__':
+    main()
