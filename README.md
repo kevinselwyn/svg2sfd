@@ -1,14 +1,14 @@
-#svg2sfd
+# svg2sfd
 
 Convert SVG to FontForge SFD format
 
-##Installation
+## Installation
 
 ```
 sudo python setup.py install
 ```
 
-##Usage
+## Usage
 
 ```
 Usage: svg2sfd [-h] -i INPUT [-o OUTPUT] [-n NAME] [-f FAMILY] [-c COPYRIGHT]
@@ -27,7 +27,7 @@ optional arguments:
   -v VERSION, --version VERSION        font version number
 ```
 
-##Formatting
+## Formatting
 
 The input SVG file should be formatted in a grid of cells 1000x1000 pixels.
 
